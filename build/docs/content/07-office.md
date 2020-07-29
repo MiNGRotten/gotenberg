@@ -165,3 +165,33 @@ $request->setPageRanges('1-3');
 $dest = 'result.pdf';
 $client->store($request, $dest);
 ```
+
+## PapereSize and PapereFormat
+
+You may also customize the paper sizing and format.
+
+By default, it will be rendered with libreoffice default values.
+
+> **Attention:** PaperSize may not work as expected. 
+
+### cURL
+
+```bash
+$ curl --request POST \
+    --url http://localhost:3000/convert/office \
+    --header 'Content-Type: multipart/form-data' \
+    --form files=@document.docx \
+    --form paperFormat=USER \
+    --form paperWidth=20000 \
+    --form paperHeight=20000 \
+    -o result.pdf
+```
+
+```bash
+$ curl --request POST \
+    --url http://localhost:3000/convert/office \
+    --header 'Content-Type: multipart/form-data' \
+    --form files=@document.docx \
+    --form paperFormat=A4 \
+    -o result.pdf
+```

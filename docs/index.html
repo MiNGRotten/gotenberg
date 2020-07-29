@@ -1310,6 +1310,40 @@ $dest = &#39;result.pdf&#39;;
 $client-&gt;store($request, $dest);
 </pre>
 
+<h2 class="Heading"><a class="Anchor" aria-hidden="true" id="office.page_size_format" href="#office.page_size_format">
+	<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+</a>Paper size and Paper format</h2>
+
+<p>You may also customize the paper sizing and format.</p>
+
+<p>By default, it will be rendered with libreoffice default values.</p>
+
+<blockquote>
+<p><strong>Attention:</strong> PaperSize may not work as expected.</p>
+</blockquote>
+
+<h3 class="Heading"><a class="Anchor" aria-hidden="true" id="office.page_ranges.c_url" href="#office.page_ranges.c_url">
+	<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+</a>cURL</h3>
+
+<pre class="chroma">$ curl --request POST <span class="se">\
+</span><span class="se"></span>    --url http://localhost:3000/convert/office <span class="se">\
+</span><span class="se"></span>    --header <span class="s1">&#39;Content-Type: multipart/form-data&#39;</span> <span class="se">\
+</span><span class="se"></span>    --form <span class="nv">files</span><span class="o">=</span>@document.docx <span class="se">\
+</span><span class="se"></span>    --form <span class="nv">paperFormat=USER</span> <span class="se">\
+</span><span class="se"></span>    --form <span class="nv">paperWidth=20000</span> <span class="se">\
+</span><span class="se"></span>    --form <span class="nv">paperHeight=20000</span> <span class="se">\
+</span><span class="se"></span>    -o result.pdf
+</pre>
+
+<pre class="chroma">$ curl --request POST <span class="se">\
+</span><span class="se"></span>    --url http://localhost:3000/convert/office <span class="se">\
+</span><span class="se"></span>    --header <span class="s1">&#39;Content-Type: multipart/form-data&#39;</span> <span class="se">\
+</span><span class="se"></span>    --form <span class="nv">files</span><span class="o">=</span>@document.docx <span class="se">\
+</span><span class="se"></span>    --form <span class="nv">paperFormat=A4</span> <span class="se">\
+</span><span class="se"></span>    -o result.pdf
+</pre>
+
               </div>
             
               <div class="Page" id="merge">

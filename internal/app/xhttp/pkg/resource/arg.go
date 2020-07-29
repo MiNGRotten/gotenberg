@@ -36,6 +36,9 @@ const (
 	// PaperHeightArgKey is the key
 	// of the argument "paperHeight".
 	PaperHeightArgKey ArgKey = "paperHeight"
+	// PaperFormatArgKey is the key
+	// of the argument "paperFormat"
+	PaperFormatArgKey ArgKey = "paperFormat"
 	// MarginTopArgKey is the key
 	// of the argument "marginTop".
 	MarginTopArgKey ArgKey = "marginTop"
@@ -75,8 +78,10 @@ func ArgKeys() []ArgKey {
 		WebhookURLTimeoutArgKey,
 		RemoteURLArgKey,
 		WaitDelayArgKey,
+		PaperFormatArgKey,
 		PaperWidthArgKey,
 		PaperHeightArgKey,
+		PaperFormatArgKey,
 		MarginTopArgKey,
 		MarginBottomArgKey,
 		MarginLeftArgKey,

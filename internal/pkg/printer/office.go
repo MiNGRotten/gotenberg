@@ -27,6 +27,9 @@ type officePrinter struct {
 // Office Printer behaviour.
 type OfficePrinterOptions struct {
 	WaitTimeout float64
+	PaperFormat string
+	PaperWidth  int
+	PaperHeight int
 	Landscape   bool
 	PageRanges  string
 }
@@ -36,6 +39,9 @@ type OfficePrinterOptions struct {
 func DefaultOfficePrinterOptions(config conf.Config) OfficePrinterOptions {
 	return OfficePrinterOptions{
 		WaitTimeout: config.DefaultWaitTimeout(),
+		PaperFormat: "",
+		PaperWidth:  0,
+		PaperHeight: 0,
 		Landscape:   false,
 		PageRanges:  "",
 	}
@@ -106,6 +112,12 @@ func (p officePrinter) unoconv(ctx context.Context, fpath, destination string) e
 			fmt.Sprintf("%d", port),
 			"--format",
 			"pdf",
+		}
+		if p.opts.PaperFormat != "" {
+			args = append(args, "--printer", fmt.Sprintf("PaperFormat=%s", p.opts.PaperFormat))
+		}
+		if p.opts.PaperWidth > 0 && p.opts.PaperHeight > 0 {
+			args = append(args, "--printer", fmt.Sprintf("PaperSize=%sx%d", p.opts.PaperWidth, p.opts.PaperHeight))
 		}
 		if p.opts.Landscape {
 			args = append(args, "--printer", "PaperOrientation=landscape")

@@ -92,6 +92,18 @@ func officePrinterOptions(r resource.Resource, config conf.Config) (printer.Offi
 		if err != nil {
 			return printer.OfficePrinterOptions{}, err
 		}
+		paperFormat, err = r.StringArg(resource.PaperFormatArgKey, "")
+		if err != nil {
+			return printer.OfficePrinterOptions{}, err
+		}
+		paperWidth, err = r.Int64Arg(resource.PaperWidthArgKey, 0)
+		if err != nil {
+			return printer.OfficePrinterOptions{}, err
+		}
+		paperHeight, err = r.Int64Arg(resource.PaperHeightArgKey, 0)
+		if err != nil {
+			return printer.OfficePrinterOptions{}, err
+		}
 		landscape, err := r.BoolArg(resource.LandscapeArgKey, false)
 		if err != nil {
 			return printer.OfficePrinterOptions{}, err
@@ -102,6 +114,9 @@ func officePrinterOptions(r resource.Resource, config conf.Config) (printer.Offi
 		}
 		return printer.OfficePrinterOptions{
 			WaitTimeout: waitTimeout,
+			PaperFormat: paperFormat,
+			PaperWidth:  paperWidth,
+			PaperHeight: paperHeight,
 			Landscape:   landscape,
 			PageRanges:  pageRanges,
 		}, nil

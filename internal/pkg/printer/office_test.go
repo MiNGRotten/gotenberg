@@ -55,6 +55,26 @@ func TestOfficePrinter(t *testing.T) {
 	assert.Nil(t, err)
 	err = os.RemoveAll(dest)
 	assert.Nil(t, err)
+	// options with pagesize
+	opts = DefaultOfficePrinterOptions(config)
+	opts.PaperFormat = "USER"
+	opts.PaperHeight = 20000
+	opts.PaperWidth = 20000
+	p = NewOfficePrinter(logger, []string{fpaths[0]}, opts)
+	dest = test.GenerateDestination()
+	err = p.Print(dest)
+	assert.Nil(t, err)
+	err = os.RemoveAll(dest)
+	assert.Nil(t, err)
+	// options with pageformat
+	opts = DefaultOfficePrinterOptions(config)
+	opts.PaperFormat = "A4"
+	p = NewOfficePrinter(logger, []string{fpaths[0]}, opts)
+	dest = test.GenerateDestination()
+	err = p.Print(dest)
+	assert.Nil(t, err)
+	err = os.RemoveAll(dest)
+	assert.Nil(t, err)
 	// should not be OK as options have
 	// a wrong page ranges.
 	opts = DefaultOfficePrinterOptions(config)
